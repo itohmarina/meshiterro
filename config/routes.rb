@@ -5,6 +5,8 @@ Rails.application.routes.draw do
 
   resources :post_images, only: [:new, :create, :index, :show, :destroy] do
     resources :post_comments, only: [:create, :destroy]
+    resource :favorites, only: [:create, :destroy]
+    # resource単数形だと、URLに/:idが含まれなくなる、該当テーブルのparams[:id]を使わなくて良いときに使う
   end
 
   resources :users, only: [:show, :edit, :update]
